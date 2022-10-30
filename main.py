@@ -37,9 +37,10 @@ class Wordle(cmd2.Cmd):
         self.words = self.initial_words[::]
         self.prev_words = []
 
-        _ = os.system('clear')
-
-        self.print_cur_words()
+        if (os.name == 'posix'):
+            os.system('clear')
+        else:
+            os.system('cls')
 
     def __init__(self, dictionary_filename):
         super().__init__()
